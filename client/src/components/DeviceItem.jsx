@@ -1,0 +1,34 @@
+import React from 'react';
+import {Card, Col, Image} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
+import {DEVICE_ROUTE} from "../Routes/Utils.js";
+
+const DeviceItem = ({device}) => {
+
+    const navigate = useNavigate()
+
+
+    return (
+        <Col md={3} className={"mt-3"} onClick={()=> navigate(DEVICE_ROUTE + '/' + device.id)}>
+            <Card style={{width: 150, cursor: 'pointer'}} border={"light"}>
+                <Image width={150} height={150} src={import.meta.env.VITE_API_URL + device.img}/>
+                <div className="text-black-50 mt-1 d-flex justify-content-between align-items-center">
+                    <div> Samsung</div>
+                    <div className="d-flex align-items-center">
+                        <div>{device.rating}</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="20" height="20"
+                             viewBox="0 0 512 512">
+                            <path
+                                d="M506 217.4a20 20 0 0 0 5-20.6 20 20 0 0 0-16.2-13.7l-152.4-22-.2-.3-68.2-138a20 20 0 0 0-18-11.3 20 20 0 0 0-18 11.2l-68.2 138.1-.2.2-152.4 22.1A20 20 0 0 0 1 196.8a20 20 0 0 0 5 20.6L116.4 325c.1 0 .2.2.1.3l-26 151.7c-2 12.1 7.5 23.5 19.8 23.5 3.2 0 6.4-.7 9.4-2.3l136.2-71.6h.4L392.4 498a20 20 0 0 0 21.2-1.5 20 20 0 0 0 8-19.7l-26-151.7v-.3L506 217.4zM376 328.5l26 151.8v.3c-.3.2-.3.1-.5 0L265.3 409a20 20 0 0 0-18.6 0l-136.3 71.7h-.4l-.2-.4 26-151.8a20 20 0 0 0-5.7-17.7L19.8 203.3c0-.1-.1-.2 0-.4 0-.2 0-.2.3-.2l152.3-22.2a20 20 0 0 0 15.1-11l68.2-138c0-.2 0-.2.3-.2.2 0 .3 0 .3.2l68.2 138c2.9 6 8.5 10 15 11L492 202.7c.2 0 .3 0 .3.2.1.2 0 .3 0 .4L381.9 310.8a20 20 0 0 0-5.8 17.7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    {device.name}
+                </div>
+            </Card>
+        </Col>
+    );
+};
+
+export default DeviceItem;
